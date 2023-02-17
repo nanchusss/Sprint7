@@ -31,7 +31,7 @@ export const StyledDiv = styled.div`
 export const Producto = styled.p`
   width: 100%;
   font-size: 16px;
-  box-shadow: 10px 10px 28px 3px rgba(162, 162, 162, 0.64);
+  box-shadow: 10px 10px 25px 1px rgba(183, 183, 183, 0.75);
   background-color: #cd6acd;
   border-radius: 5px;
   display: flex;
@@ -39,6 +39,10 @@ export const Producto = styled.p`
   align-items: center;
   padding: 30px;
   color: black;
+  &:hover {
+    background-color: #aa4daa;
+    box-shadow: 10px 10px 25px 1px rgba(240, 150, 233, 0.75);
+  }
 `;
 export const Total = styled.p`
   background-color: #ffffff;
@@ -49,4 +53,11 @@ export const Total = styled.p`
   margin-left: auto;
   margin-right: auto;
   position: relative;
+`;
+export const OtherProducts = styled.div`
+  border-color: black;
+  border-radius: 8px;
+`;
+export const Panel = styled.div`
+  border: 1px solid #848485;
 `;
