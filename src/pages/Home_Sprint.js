@@ -137,36 +137,35 @@ function CheckboxesExample(props) {
   //RENDERIZADO DE LA PÁGINA
   return (
     <>
-      <MyBody>
-        <Pretty2>
-          {" "}
-          <h4> Qué quieres hacer? </h4>
-        </Pretty2>
-        <StyledDiv>
-          <div>
-            {productos.map((producto, index) => {
-              return (
-                <Producto>
-                  <p>
-                    <input
-                      type="checkBox"
-                      id={producto.id}
-                      name={producto.nombre}
-                      value={producto.precio}
-                      onChange={calcularTotal}
-                      onClick={mostrarDiv}
-                      // Cambio de estado del checkbox
-                    />
-                  </p>
+      <Pretty2>
+        {" "}
+        <h4> Qué quieres hacer? </h4>
+      </Pretty2>
+      <StyledDiv>
+        <div>
+          {productos.map((producto, index) => {
+            return (
+              <Producto>
+                <p>
+                  <input
+                    type="checkBox"
+                    id={producto.id}
+                    name={producto.nombre}
+                    value={producto.precio}
+                    onChange={calcularTotal}
+                    onClick={mostrarDiv}
+                    // Cambio de estado del checkbox
+                  />
+                </p>
 
-                  <p>{producto.nombre}</p>
-                </Producto>
-              );
-            })}
-          </div>
-        </StyledDiv>
-        <Total>Total: {total}</Total>
-      </MyBody>
+                <p>{producto.nombre}</p>
+              </Producto>
+            );
+          })}
+        </div>
+      </StyledDiv>
+      <Total>Total: {total}</Total>
+
       <div className={mostrarComponente ? "Mostrar" : null}>
         {mostrarComponente && (
           <DivOculto>

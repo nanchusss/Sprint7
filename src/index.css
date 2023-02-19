@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("./images/gradient2.png");
+   font-family: url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
 }
 
 code {
