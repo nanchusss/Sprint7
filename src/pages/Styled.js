@@ -1,6 +1,13 @@
 import styled from "styled-components";
 
+export const MyBody = styled.div`
+  background-image: url("../images/gradient.png");
+  background-size: cover;
+`;
+
 export const Pretty = styled.button`
+  background-image: url("../images/gradient.png");
+  background-size: cover;
   padding: 10px;
   border: none;
   border-radius: 8px;
@@ -13,14 +20,17 @@ export const Pretty = styled.button`
   min-width: 40%;
 `;
 export const Pretty2 = styled.h4`
-  max-width: 50%;
-  font-size: 24px;
-  margin-top: 50px;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  max-width: 100%;
+  font-size: 44px;
+  margin-top: 20px;
+  margin-bottom: 0px;
   margin-left: auto;
   margin-right: auto;
 `;
 export const StyledDiv = styled.div`
-  margin-top: 50px;
   max-width: 30%;
   display: flex;
   margin-left: auto;
@@ -29,15 +39,16 @@ export const StyledDiv = styled.div`
 `;
 
 export const Producto = styled.p`
-  width: 100%;
-  font-size: 16px;
+  font-size: 22px;
   box-shadow: 10px 10px 25px 1px rgba(183, 183, 183, 0.75);
   background-color: #cd6acd;
   border-radius: 5px;
   display: flex;
   justify-content: start;
   align-items: center;
+  margin-bottom: ${(props) => props.style};
   padding: 30px;
+  z-index: 0;
   color: black;
   &:hover {
     background-color: #aa4daa;
@@ -54,10 +65,45 @@ export const Total = styled.p`
   margin-right: auto;
   position: relative;
 `;
+export const DivOculto = styled.div`
+  /* visibility: hidden !important; */
+  display: flex;
+  margin: 20px;
+  margin-left: 600px;
+  z-index: 0;
+  font-size: 16px;
+`;
 export const OtherProducts = styled.div`
-  border-color: black;
+  border-color: #dfdddd;
+  background-color: #b897b2;
+  border: 0.5px solid #dfdddd;
+  padding: 16px;
+  background-color: white;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  max-width: 200px;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+export const Buttons = styled.button`
+  background-color: #c9a6c2;
+  border-color: #d6d5d5;
+
+  max-width: 50px;
+  font-size: 20px;
+  border-radius: 35px;
+  box-shadow: 10px 10px 25px 1px rgba(183, 183, 183, 0.75);
+  &:hover {
+    background-color: #b478b4;
+    box-shadow: 10px 10px 25px 1px rgba(236, 171, 231, 0.75);
+  }
 `;
 export const Panel = styled.div`
-  border: 1px solid #848485;
+  border: none;
+  margin: 0px;
+  padding: 0px;
 `;

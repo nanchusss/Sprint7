@@ -3,12 +3,14 @@ import {
   Producto,
   Total,
   Pretty2,
-  Panel,
+  Buttons,
+  DivOculto,
   OtherProducts,
+  MyBody,
 } from "./Styled";
 import { useState } from "react";
 
-function CheckboxesExample() {
+function CheckboxesExample(props) {
   const productos = [
     { id: 1, nombre: "Una página Web (500 E)", precio: 500 },
     { id: 2, nombre: "Una consultoría SEO (300 E)", precio: 300 },
@@ -19,34 +21,15 @@ function CheckboxesExample() {
     { id: 4, nombre: "Cantidad de Páginas", precio: 30 },
     { id: 5, nombre: "Cantidad de Idiomes", precio: 30 },
   ];
-  // const c = other[0].nombre;
-
-  // const cPrecio = other[0].precio;
-
-  // const i = other[1].nombre;
 
   const [total, setTotal] = useState(0);
-  const [count, setCount] = useState(1);
-
-  // const calculoIdiomasYPaginas = (i) => {
-  //   let newCount = count;
-  //   console.log()
-  //   if (i.target.value === 500) {
-  //     console.log("estoy en web");
-  //   }
-  //   setTotal(newCount);
-  // };
   const [cantidad, setCantidad] = useState(0);
-  // const [pricePaginas, setTotalPricePaginas] = useState(0);
-  // const [priceIdiomas, setTotalPriceIdiomas] = useState(0);
-
   const [cantidad2, setCantidad2] = useState(0);
+  const [mostrarComponente, setMostrarComponente] = useState(false);
 
+  //  CALCULAR TOTAL
   const calcularTotal = (e) => {
     let nuevoTotal = total;
-
-    //parseInt((e.target.value = 500)) ? console.log("sí") : console.log("no");
-
     if (e.target.checked) {
       nuevoTotal += parseInt(e.target.value);
       //suma el valor del checked y si no lo resta
@@ -55,6 +38,8 @@ function CheckboxesExample() {
     }
     setTotal(nuevoTotal);
   };
+
+  //AUMENTAR CONTADOR DE PAGINAS E IDIOMAS
   const aumentar = (a) => {
     let valor = a.target.value;
     console.log(valor);
@@ -64,7 +49,6 @@ function CheckboxesExample() {
     contador++;
     // console.log("funciona");
     setTotal(valor * contador);
-
     if (id === "4") {
       console.log("4");
       setCantidad(contador);
@@ -74,17 +58,13 @@ function CheckboxesExample() {
       contador++;
       console.log("este es el contador2", contador);
       setTotal(valor * contador);
-      // let contador = cantidad;
-      // contador++;
-
-      // console.log("Cantidad de Idiomas: ", contador);
-      // // setTotalPriceIdiomas(valor * contador);
-      // setTotal(valor * contador);
       setCantidad2(contador);
     }
 
     // setTotal(valor * contador);
   };
+
+  //DISMINUIR EL CONTADOR DE PÁGINAS E IDIOMAS
   const disminuir = (a) => {
     let valor = a.target.value;
     let contador = cantidad;
@@ -105,95 +85,127 @@ function CheckboxesExample() {
     }
   };
 
-  return (
-    <>
-      <Pretty2>
-        {" "}
-        <h4> Qué quieres hacer? </h4>
-      </Pretty2>
-      <StyledDiv>
-        <div>
-          {productos.map((producto, index) => {
-            return (
-              <Producto>
-                <p>
-                  <input
-                    type="checkBox"
-                    id={producto.id}
-                    name={producto.nombre}
-                    value={producto.precio}
-                    onChange={calcularTotal}
-                    // Cambio de estado del checkbox
-                  />
-                </p>
-                <p>{producto.nombre}</p>
-              </Producto>
-            );
-          })}
-        </div>
-      </StyledDiv>
-      <Total>Total: {total}</Total>
-      <>
+  //MOSTRAR DIV OCULTO
+  const mostrarDiv = (a) => {
+    let id = a.target.id;
+    const divOculto = (
+      <DivOculto>
         {other.map((a) => {
           console.log(a.id);
 
           if (a.id === 4) {
             console.log("Va a renderizar todo una sola vez");
             return (
-              <>
+              <OtherProducts>
                 <div>El total de páginas es: {cantidad}</div>
-                <button value={a.precio} id={a.id} onClick={aumentar}>
-                  {" "}
+                <Buttons value={a.precio} id={a.id} onClick={aumentar}>
                   +
-                </button>
-                {/* <p>{pricePaginas} Este es el precio de páginas</p>{" "} */}
-                <button value={a.precio} id="4" onClick={disminuir}>
+                </Buttons>
+
+                <Buttons value={a.precio} id="4" onClick={disminuir}>
                   {" "}
-                  -{" "}
-                </button>
+                  -
+                  {/* <p>{pricePaginas} Este es el precio de páginas</p>{" "} */}
+                </Buttons>
+
                 <div>El total de Idiomas es: {cantidad2}</div>
-                <button value={a.precio} id="5" onClick={aumentar}>
-                  {" "}
+                <Buttons value={a.precio} id="5" onClick={aumentar}>
                   +
-                </button>
+                </Buttons>
+
                 {/* <p>{pricePaginas} Este es el precio de páginas</p>{" "} */}
-                <button value={a.precio} id="5" onClick={disminuir}>
-                  {" "}
-                  -{" "}
-                </button>
-                <div></div>
-                <p>{total}</p>
-              </>
+                <Buttons value={a.precio} id="5" onClick={disminuir}>
+                  -
+                </Buttons>
+
+                <div>Importe: {total}</div>
+              </OtherProducts>
             );
           }
-          // if (a.id === 5) {
-          //   return <div> El total de Idiomas es: {cantidadIdiomas}</div>;
-          // // }
-          // return (
-          //   <OtherProducts>
-          //     <div>
-          //       {/* <input type="number" id={a.id} value={cantidad} />
-          //     <p>{a.nombre}</p> */}
-          //       <div>El total de páginas es: {cantidadPaginas}</div>
-          //       <div>El total de Idiomas es: {cantidadIdiomas}</div>
-          //       <button value={a.precio} id={a.id} onClick={aumentar}>
-          //         {" "}
-          //         +
-          //       </button>
-          //       {/* <p>{pricePaginas} Este es el precio de páginas</p>{" "} */}
-          //       <button value={a.precio} id={a.id} onClick={disminuir}>
-          //         {" "}
-          //         -{" "}
-          //       </button>
-
-          //       {/* <p>{priceIdiomas} Este es el precio de Idiomas</p> */}
-          //       {/* <p>{cantidad}</p> */}
-          //       <p>{total}</p>
-          //     </div>
-          //   </OtherProducts>
-          // );
         })}
-      </>
+      </DivOculto>
+    );
+
+    if (id === "1") {
+      setMostrarComponente(!mostrarComponente);
+      console.log("si funciona mostrar div");
+
+      return divOculto;
+    }
+  };
+
+  //RENDERIZADO DE LA PÁGINA
+  return (
+    <>
+      <MyBody>
+        <Pretty2>
+          {" "}
+          <h4> Qué quieres hacer? </h4>
+        </Pretty2>
+        <StyledDiv>
+          <div>
+            {productos.map((producto, index) => {
+              return (
+                <Producto>
+                  <p>
+                    <input
+                      type="checkBox"
+                      id={producto.id}
+                      name={producto.nombre}
+                      value={producto.precio}
+                      onChange={calcularTotal}
+                      onClick={mostrarDiv}
+                      // Cambio de estado del checkbox
+                    />
+                  </p>
+
+                  <p>{producto.nombre}</p>
+                </Producto>
+              );
+            })}
+          </div>
+        </StyledDiv>
+        <Total>Total: {total}</Total>
+      </MyBody>
+      <div className={mostrarComponente ? "Mostrar" : null}>
+        {mostrarComponente && (
+          <DivOculto>
+            {other.map((a) => {
+              console.log(a.id);
+
+              if (a.id === 4) {
+                console.log("Va a renderizar todo una sola vez");
+                return (
+                  <OtherProducts>
+                    <div>El total de páginas es: {cantidad}</div>
+                    <Buttons value={a.precio} id={a.id} onClick={aumentar}>
+                      +
+                    </Buttons>
+
+                    <Buttons value={a.precio} id="4" onClick={disminuir}>
+                      {" "}
+                      -
+                      {/* <p>{pricePaginas} Este es el precio de páginas</p>{" "} */}
+                    </Buttons>
+
+                    <div>El total de Idiomas es: {cantidad2}</div>
+                    <Buttons value={a.precio} id="5" onClick={aumentar}>
+                      +
+                    </Buttons>
+
+                    {/* <p>{pricePaginas} Este es el precio de páginas</p>{" "} */}
+                    <Buttons value={a.precio} id="5" onClick={disminuir}>
+                      -
+                    </Buttons>
+
+                    <div>Importe: {total}</div>
+                  </OtherProducts>
+                );
+              }
+            })}
+          </DivOculto>
+        )}
+      </div>
     </>
   );
 }
