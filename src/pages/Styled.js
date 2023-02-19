@@ -62,7 +62,7 @@ export const Producto = styled.p`
 export const Total = styled.p`
   font-family: url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
   font-size: 32px;
-  color: #8d8b8c;
+  color: #526173;
   max-width: 30%;
   display: flex;
   margin-bottom: 50px;
@@ -87,18 +87,28 @@ export const OtherProducts = styled.div`
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-
+  width: 300px;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
+  section {
+    display: flex;
+    flex-direction: row;
+  }
 `;
 export const Buttons = styled.button`
   background-color: #eeeff3;
   border-color: #d6d5d5;
-  margin: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+
+  margin-bottom: 10px;
   font-size: 16px;
+  display: inline-flex;
+  position: relative;
+  align-items: center;
   width: 100%;
   max-width: 50px;
   border-radius: 35px;

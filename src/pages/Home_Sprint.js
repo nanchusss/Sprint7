@@ -42,7 +42,7 @@ function CheckboxesExample(props) {
   //AUMENTAR CONTADOR DE PAGINAS E IDIOMAS
   const aumentar = (a) => {
     console.log(total);
-    //---------------------------CONSULTA -----------------------------
+    //---------------------------CONSULTA ------------------------------
     //Pablo, una consulta, este console.log me muestra el total que es 500, pero luego se borra, porqué me está pasando eso?
     let valor = a.target.value;
     console.log(valor);
@@ -51,7 +51,7 @@ function CheckboxesExample(props) {
     let contador = cantidad;
     contador++;
     // console.log("funciona");
-    setTotal(valor * contador);
+    setTotal(total + valor * contador);
     if (id === "4") {
       console.log("4");
       setCantidad(contador);
@@ -83,57 +83,18 @@ function CheckboxesExample(props) {
     if (contador2 > 0 && id === "5") {
       console.log("la chucha");
       contador2--;
-      setTotal(valor * contador2);
       setCantidad2(contador2);
+      setTotal(valor * contador2);
     }
   };
 
   //MOSTRAR DIV OCULTO
   const mostrarDiv = (a) => {
     let id = a.target.id;
-    const divOculto = (
-      <DivOculto>
-        {other.map((a) => {
-          console.log(a.id);
-
-          if (a.id === 4) {
-            console.log("Va a renderizar todo una sola vez");
-            return (
-              <OtherProducts>
-                <div>El total de páginas es: {cantidad}</div>
-                <Buttons value={a.precio} id={a.id} onClick={aumentar}>
-                  +
-                </Buttons>
-
-                <Buttons value={a.precio} id="4" onClick={disminuir}>
-                  {" "}
-                  -
-                  {/* <p>{pricePaginas} Este es el precio de páginas</p>{" "} */}
-                </Buttons>
-
-                <div>El total de Idiomas es: {cantidad2}</div>
-                <Buttons value={a.precio} id="5" onClick={aumentar}>
-                  +
-                </Buttons>
-
-                {/* <p>{pricePaginas} Este es el precio de páginas</p>{" "} */}
-                <Buttons value={a.precio} id="5" onClick={disminuir}>
-                  -
-                </Buttons>
-
-                <div>Importe: {total}</div>
-              </OtherProducts>
-            );
-          }
-        })}
-      </DivOculto>
-    );
 
     if (id === "1") {
       setMostrarComponente(!mostrarComponente);
       console.log("si funciona mostrar div");
-
-      return divOculto;
     }
   };
 
@@ -148,7 +109,7 @@ function CheckboxesExample(props) {
         <div>
           {productos.map((producto, index) => {
             return (
-              <Producto>
+              <Producto key={index}>
                 <p>
                   <input
                     type="checkBox"
@@ -179,26 +140,30 @@ function CheckboxesExample(props) {
                 console.log("Va a renderizar todo una sola vez");
                 return (
                   <OtherProducts>
-                    <div>El total de páginas es: {cantidad}</div>
-                    <Buttons value={a.precio} id={a.id} onClick={aumentar}>
-                      +
-                    </Buttons>
+                    <section>
+                      <div>El total de páginas es:</div>{" "}
+                      <Buttons value={a.precio} id={a.id} onClick={aumentar}>
+                        +
+                      </Buttons>
+                      <div>{cantidad}</div>
+                      <Buttons value={a.precio} id="4" onClick={disminuir}>
+                        {" "}
+                        -
+                        {/* <p>{pricePaginas} Este es el precio de páginas</p>{" "} */}
+                      </Buttons>
+                    </section>
+                    <section>
+                      <div>El total de Idiomas es:</div>
+                      <Buttons value={a.precio} id="5" onClick={aumentar}>
+                        +
+                      </Buttons>
+                      <div> {cantidad2}</div>
 
-                    <Buttons value={a.precio} id="4" onClick={disminuir}>
-                      {" "}
-                      -
                       {/* <p>{pricePaginas} Este es el precio de páginas</p>{" "} */}
-                    </Buttons>
-
-                    <div>El total de Idiomas es: {cantidad2}</div>
-                    <Buttons value={a.precio} id="5" onClick={aumentar}>
-                      +
-                    </Buttons>
-
-                    {/* <p>{pricePaginas} Este es el precio de páginas</p>{" "} */}
-                    <Buttons value={a.precio} id="5" onClick={disminuir}>
-                      -
-                    </Buttons>
+                      <Buttons value={a.precio} id="5" onClick={disminuir}>
+                        -
+                      </Buttons>
+                    </section>
 
                     <div>Importe: {total}</div>
                   </OtherProducts>
