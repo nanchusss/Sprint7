@@ -51,7 +51,7 @@ function CheckboxesExample(props) {
     let contador = cantidad;
     contador++;
     // console.log("funciona");
-    setTotal(total + valor * contador);
+    setTotal(valor * contador);
     if (id === "4") {
       console.log("4");
       setCantidad(contador);

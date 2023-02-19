@@ -75,7 +75,6 @@ export const DivOculto = styled.div`
   /* visibility: hidden !important; */
   display: flex;
   margin: 20px;
-  margin-left: 600px;
   z-index: 0;
   font-size: 16px;
 `;
@@ -114,11 +113,43 @@ export const Buttons = styled.button`
   border-radius: 35px;
   &:hover {
     background-color: #e6e9f0;
-    box-shadow: 10px 10px 25px 1px rgba(183, 183, 183, 0.75);
+    box-shadow: 10px 10px 25px 0.5px rgba(220, 217, 220, 0.75);
   }
 `;
 export const Panel = styled.div`
   border: none;
   margin: 0px;
   padding: 0px;
+`;
+export const Welcome = styled.div`
+  color: #526173;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: url("/sprint-7/src/images/gradient.png");
+  p {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  button {
+    font-size: 22px;
+    background-color: white;
+    border: 1px solid;
+    color: #526173;
+    border-color: #aab7c8;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 200px;
+    &:hover {
+      background-color: #e6e9f0;
+      box-shadow: 10px 10px 25px 0.5px rgba(220, 217, 220, 0.75);
+    }
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
 `;
