@@ -41,6 +41,9 @@ function CheckboxesExample(props) {
 
   //AUMENTAR CONTADOR DE PAGINAS E IDIOMAS
   const aumentar = (a) => {
+    console.log(total);
+    //---------------------------CONSULTA -----------------------------
+    //Pablo, una consulta, este console.log me muestra el total que es 500, pero luego se borra, porqué me está pasando eso?
     let valor = a.target.value;
     console.log(valor);
     let id = a.target.id;

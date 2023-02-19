@@ -17,12 +17,13 @@ export const Pretty = styled.button`
 export const Pretty2 = styled.h4`
   display: flex;
   position: relative;
-  color: #8d8b8c;
+  color: #5f5e5f;
   justify-content: center;
   max-width: 100%;
+  font-weight: bold;
   font-size: 32px;
   margin-top: 20px;
-  margin-bottom: 0px;
+  margin-bottom: -20px;
   margin-left: auto;
   margin-right: auto;
 `;
@@ -40,7 +41,6 @@ export const Producto = styled.p`
   /* box-shadow: 10px 10px 25px 1px rgba(240, 125, 211, 0.75); */
   background-color: #e6e9f0;
   border-radius: 5px;
-
   display: flex;
   justify-content: start;
   align-items: center;
@@ -49,11 +49,14 @@ export const Producto = styled.p`
   color: #868586;
   &:hover {
     box-shadow: 10px 10px 25px 0.5px rgba(220, 217, 220, 0.75);
-    color: #414041;
+    color: #5f5e5f;
   }
   &selected {
     background-color: white;
     color: white;
+  }
+  input {
+    padding: 10px;
   }
 `;
 export const Total = styled.p`
