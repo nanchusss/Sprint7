@@ -71,7 +71,7 @@ function CheckboxesExample(props) {
 
   //DISMINUIR EL CONTADOR DE PÁGINAS E IDIOMAS
   const disminuir = (a) => {
-    let valor = a.target.value;
+    //let valor = a.target.value;
     let contador = cantidad;
     let id = a.target.id;
 
