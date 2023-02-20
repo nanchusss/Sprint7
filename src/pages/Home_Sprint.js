@@ -41,7 +41,7 @@ function CheckboxesExample(props) {
 
   //AUMENTAR CONTADOR DE PAGINAS E IDIOMAS
   const aumentar = (a) => {
-    console.log(total);
+    console.log("Este es el total antes de entrar a los if,", total);
     //---------------------------CONSULTA ------------------------------
     //Pablo, una consulta, este console.log me muestra el total que es 500, pero luego se borra, porqué me está pasando eso?
     let valor = a.target.value;
@@ -53,14 +53,16 @@ function CheckboxesExample(props) {
     // console.log("funciona");
     setTotal(valor * contador);
     if (id === "4") {
-      console.log("4");
+      console.log("Este es el total entrando en el if de id 4", total);
+      setTotal(30 + total);
+      console.log(total);
       setCantidad(contador);
     }
     if (id === "5") {
       contador = cantidad2;
       contador++;
-      console.log("este es el contador2", contador);
-      setTotal(valor * contador);
+      console.log("este es el total entrando en el if id 5", total);
+      setTotal(total + 30);
       setCantidad2(contador);
     }
 
@@ -75,7 +77,7 @@ function CheckboxesExample(props) {
 
     if (id === "4" && contador > 0) {
       contador--;
-      setTotal(valor * contador);
+      setTotal(total - 30);
       console.log("el total es", total);
       setCantidad(contador);
     }
@@ -84,7 +86,7 @@ function CheckboxesExample(props) {
       console.log("la chucha");
       contador2--;
       setCantidad2(contador2);
-      setTotal(valor * contador2);
+      setTotal(total - 30);
     }
   };
 
@@ -164,8 +166,6 @@ function CheckboxesExample(props) {
                         -
                       </Buttons>
                     </section>
-
-                    <div>Importe: {total}</div>
                   </OtherProducts>
                 );
               }
