@@ -6,11 +6,10 @@ import {
   Buttons,
   DivOculto,
   OtherProducts,
-  MyBody,
 } from "./Styled";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function CheckboxesExample(props) {
+function CheckboxesExample(presupuesto) {
   const productos = [
     { id: 1, nombre: "Una página Web (500 E)", precio: 500 },
     { id: 2, nombre: "Una consultoría SEO (300 E)", precio: 300 },
@@ -21,6 +20,12 @@ function CheckboxesExample(props) {
     { id: 4, nombre: "Cantidad de Páginas", precio: 30 },
     { id: 5, nombre: "Cantidad de Idiomes", precio: 30 },
   ];
+  //LOCALSTORAGE Y DEFINICIÓN DE TOTAL
+
+  // const totalGuardado = localStorage.getItem("total")
+  //   ? JSON.parse(localStorage.getItem("total"))
+  //   : [];
+  // const [total, setTotal] = useState(totalGuardado);
 
   const [total, setTotal] = useState(0);
   const [cantidad, setCantidad] = useState(0);
@@ -38,6 +43,18 @@ function CheckboxesExample(props) {
     }
     setTotal(nuevoTotal);
   };
+
+  //LOCALSTORAGE, ME GUARDA EL TOTAL DEL PRESUPUESTO
+  useEffect(() => {
+    console.log("Cambio en total");
+    localStorage.setItem("total", JSON.stringify(total));
+    //el almacenamiento solo puede ser en una cadena de texto y por ello, usamos json.stringify
+    console.log(
+      JSON.stringify("Almacenamiento local del total, que es: ", total)
+    );
+
+    //código cada vez que hay un cambio en la página, pero queremos que solo sea cuando el estado cambie
+  }, [total]);
 
   //AUMENTAR CONTADOR DE PAGINAS E IDIOMAS
   const aumentar = (a) => {
