@@ -25,12 +25,12 @@ function CheckboxesExample({ productos }) {
     setActive(!active);
     console.log(active);
   };
-  const [mensaje, setMensaje] = useState(
-    "Este es el número de páginas de su Web"
-  );
-  const [mensaje2, setMensaje2] = useState(
-    "Este es el número de Idiomas de su página Web"
-  );
+  // const [mensaje, setMensaje] = useState(
+  //   "Este es el número de páginas de su Web"
+  // );
+  // const [mensaje2, setMensaje2] = useState(
+  //   "Este es el número de Idiomas de su página Web"
+  // );
   // const cambiarMensaje = () => {
   //   setMensaje("idiomas");
   // };
@@ -243,7 +243,9 @@ function CheckboxesExample({ productos }) {
                       ></FontAwesomeIcon>
                       <Modal active={active} toggle={toggle}>
                         <ModalStyle>
-                          <div>{mensaje}</div>
+                          <div>
+                            Este valor indica el número de páginas de la Web
+                          </div>
                         </ModalStyle>
                       </Modal>
                     </section>
@@ -262,8 +264,7 @@ function CheckboxesExample({ productos }) {
                         <Modal active={active} toggle={toggle}>
                           <ModalStyle>
                             <div>
-                              Este elemento muestra el número de idiomas de su
-                              Web
+                              Este valor muestra el número de idiomas de su Web
                             </div>
                           </ModalStyle>
                         </Modal>
