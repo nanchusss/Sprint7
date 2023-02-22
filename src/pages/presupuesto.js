@@ -10,27 +10,21 @@ import {
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
-import { v4 as uuidv4 } from "uuid";
-import Modal from "../Modal";
+import Modal from "../components/Modal";
 import { ModalStyle } from "./Styled";
 
-function CheckboxesExample({ productos }) {
+function Presupuesto({ productos }) {
   //MANEJO DEL POPUP MODAL
-
   const [active, setActive] = useState(false);
-
   const toggle = () => {
     console.log("se ejecuta toggle");
-    console.log(active);
     setActive(!active);
-    console.log(active);
   };
+  //PRUEBAS CAMBIO DE MENSAJE quedó en la nada he probado de todo.
   // const [mensaje, setMensaje] = useState(
   //   "Este es el número de páginas de su Web"
   // );
-  // const [mensaje2, setMensaje2] = useState(
-  //   "Este es el número de Idiomas de su página Web"
-  // );
+
   // const cambiarMensaje = () => {
   //   setMensaje("idiomas");
   // };
@@ -38,13 +32,6 @@ function CheckboxesExample({ productos }) {
     { id: 4, nombre: "Cantidad de Páginas", precio: 30 },
     { id: 5, nombre: "Cantidad de Idiomes", precio: 30 },
   ];
-  //LOCALSTORAGE Y DEFINICIÓN DE TOTAL
-
-  // const totalGuardado = localStorage.getItem("total")
-  //   ? JSON.parse(localStorage.getItem("total"))
-  //   : [];
-  // const [total, setTotal] = useState(totalGuardado);
-
   const [total, setTotal] = useState(0);
   const [cantidad, setCantidad] = useState(0);
   const [cantidad2, setCantidad2] = useState(0);
@@ -56,72 +43,24 @@ function CheckboxesExample({ productos }) {
     let nuevoTotal = total;
 
     if (e.target.checked) {
-      //let element = e.target.checked;
       console.log(e.target.checked);
       console.log(e.target.id);
       nuevoTotal += parseInt(e.target.value);
-      //suma el valor del checked y si no lo resta
-
-      //console.log(carritoElemento);
     } else {
       nuevoTotal -= parseInt(e.target.value);
     }
     setTotal(nuevoTotal);
   };
 
-  // const setCarri = (id, nuevoElemento) => {
-  //   let nuevoElemento = productos[id];
-  //   console.log("estamos editando la tarea: ", id);
-  //   setCarritoElemento(
-  //     productos.map((producto) => {
-  //       if (producto.id === id) {
-  //         return {
-  //           ...producto,
-  //           id: nuevoElemento,
-  //           //cambiando el valor de completado.
-  //         };
-  //       }
-  //       return producto;
-  //     })
-  //   );
-  // };
-  // const settingCarrito = ({ productos }) => {
-  //   // e.preventDefault();
-  //   console.log("hola si funciono para setear el carrito");
-  //   setCarritoElemento([
-  //     ...carritoElemento,
-  //     {
-  //       productos,
-  //     },
-  //   ]);
-  //   console.log(carritoElemento);
-  // };
   //LOCALSTORAGE, ME GUARDA EL TOTAL DEL PRESUPUESTO
+  //el almacenamiento solo puede ser en una cadena de texto y por ello, usamos json.stringify código cada vez que hay un cambio en la página, pero queremos que solo sea cuando el estado cambie
   useEffect(() => {
     console.log("Cambio en total");
     localStorage.setItem("total", JSON.stringify(total));
-    //el almacenamiento solo puede ser en una cadena de texto y por ello, usamos json.stringify
-
-    //código cada vez que hay un cambio en la página, pero queremos que solo sea cuando el estado cambie
   }, [total]);
-  // useEffect(() => {
-  //   console.log("Cambio de producto");
-  //   localStorage.setItem("carrito", JSON.stringify(element));
-  //   //el almacenamiento solo puede ser en una cadena de texto y por ello, usamos json.stringify
-  //   console.log(
-  //     JSON.stringify("Almacenamiento local del total, que es: ", {
-  //       element,
-  //     })
-  //   );
-
-  //   //código cada vez que hay un cambio en la página, pero queremos que solo sea cuando el estado cambie
-  // }, [carritoElemento]);
 
   //AUMENTAR CONTADOR DE PAGINAS E IDIOMAS
   const aumentar = (a) => {
-    console.log("Este es el total antes de entrar a los if,", total);
-    //---------------------------CONSULTA ------------------------------
-    //Pablo, una consulta, este console.log me muestra el total que es 500, pero luego se borra, porqué me está pasando eso?
     let valor = a.target.value;
     console.log(valor);
     let id = a.target.id;
@@ -143,13 +82,10 @@ function CheckboxesExample({ productos }) {
       setTotal(total + 30);
       setCantidad2(contador);
     }
-
-    // setTotal(valor * contador);
   };
 
   //DISMINUIR EL CONTADOR DE PÁGINAS E IDIOMAS
   const disminuir = (a) => {
-    //let valor = a.target.value;
     let contador = cantidad;
     let id = a.target.id;
 
@@ -167,10 +103,6 @@ function CheckboxesExample({ productos }) {
       setTotal(total - 30);
     }
   };
-
-  // const guardar = () => {
-  //   console.log("Se acciona guardar");
-  // };
 
   //MOSTRAR DIV OCULTO
   const mostrarDiv = (a) => {
@@ -281,4 +213,4 @@ function CheckboxesExample({ productos }) {
   );
 }
 
-export default CheckboxesExample;
+export default Presupuesto;
