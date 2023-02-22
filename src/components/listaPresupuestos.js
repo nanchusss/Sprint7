@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import { v4 as uuidv4 } from "uuid";
 
-const ListaPresupuestos = ({ total }) => {
+const ListaPresupuestos = ({ total, cantidad, cantidad2 }) => {
   const [inputPresupuesto, cambiarInputPresupuesto] = useState("");
 
   const handleInputPresupuesto = (e) => {
@@ -25,6 +25,8 @@ const ListaPresupuestos = ({ total }) => {
         id: uuidv4(),
         nombre: inputPresupuesto,
         total: total,
+        cantidadPaginas: `La cantidad de páginas es ${cantidad}`,
+        cantidadIdiomas: `La cantidad de idiomas es ${cantidad2}`,
       },
     ]);
     console.log(lista);

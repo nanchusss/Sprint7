@@ -13,7 +13,16 @@ import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import Modal from "../components/Modal";
 import { ModalStyle } from "./Styled";
 
-function Presupuesto({ productos, total, setTotal }) {
+function Presupuesto({
+  productos,
+  total,
+  setTotal,
+  other,
+  cantidad,
+  setCantidad,
+  cantidad2,
+  setCantidad2,
+}) {
   //MANEJO DEL POPUP MODAL
   const [active, setActive] = useState(false);
   const toggle = () => {
@@ -28,15 +37,10 @@ function Presupuesto({ productos, total, setTotal }) {
   // const cambiarMensaje = () => {
   //   setMensaje("idiomas");
   // };
-  const other = [
-    { id: 4, nombre: "Cantidad de Páginas", precio: 30 },
-    { id: 5, nombre: "Cantidad de Idiomes", precio: 30 },
-  ];
+
   // Esta declaración de total sería para tomar el valor guardado en localstorage.
   // const [total, setTotal] = useState(totalGuardado);
 
-  const [cantidad, setCantidad] = useState(0);
-  const [cantidad2, setCantidad2] = useState(0);
   const [mostrarComponente, setMostrarComponente] = useState(false);
   //const [carritoElemento, setCarritoElemento] = useState([]);
 
