@@ -17,6 +17,7 @@ const App = () => {
 
   const [cantidad, setCantidad] = useState(0);
   const [cantidad2, setCantidad2] = useState(0);
+  const [checked, setChecked] = useState([]);
 
   const [State, setInitialState] = useState(true);
   function start() {
@@ -38,6 +39,8 @@ const App = () => {
           setCantidad={setCantidad}
           cantidad2={cantidad2}
           setCantidad2={setCantidad2}
+          checked={checked}
+          setChecked={setChecked}
         />
       </div>
       <div>
@@ -49,6 +52,7 @@ const App = () => {
           setCantidad={setCantidad}
           cantidad2={cantidad2}
           setCantidad2={setCantidad2}
+          checked={checked}
         />
       </div>
     </>

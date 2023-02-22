@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import { v4 as uuidv4 } from "uuid";
 
-const ListaPresupuestos = ({ total, cantidad, cantidad2 }) => {
+const ListaPresupuestos = ({ total, cantidad, cantidad2, checked }) => {
   const [inputPresupuesto, cambiarInputPresupuesto] = useState("");
 
   const handleInputPresupuesto = (e) => {
@@ -27,6 +27,7 @@ const ListaPresupuestos = ({ total, cantidad, cantidad2 }) => {
         total: total,
         cantidadPaginas: `La cantidad de páginas es ${cantidad}`,
         cantidadIdiomas: `La cantidad de idiomas es ${cantidad2}`,
+        elementos: checked,
       },
     ]);
     console.log(lista);

@@ -22,6 +22,8 @@ function Presupuesto({
   setCantidad,
   cantidad2,
   setCantidad2,
+  checked,
+  setChecked,
 }) {
   //MANEJO DEL POPUP MODAL
   const [active, setActive] = useState(false);
@@ -49,7 +51,10 @@ function Presupuesto({
     let nuevoTotal = total;
 
     if (e.target.checked) {
-      console.log(e.target.checked);
+      let name = e.target.name;
+      setChecked([...checked, name]);
+      console.log(e.target.name);
+      console.log(name);
       console.log(e.target.id);
       nuevoTotal += parseInt(e.target.value);
     } else {
