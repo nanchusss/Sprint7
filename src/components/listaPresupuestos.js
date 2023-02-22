@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import { v4 as uuidv4 } from "uuid";
@@ -32,6 +32,10 @@ const ListaPresupuestos = ({ total, cantidad, cantidad2, checked }) => {
     ]);
     console.log(lista);
   };
+  useEffect(() => {
+    console.log("Cambio en total");
+    localStorage.setItem("total", JSON.stringify(lista));
+  }, [lista]);
 
   return (
     <form action="" onSubmit={agregarPresupuesto}>

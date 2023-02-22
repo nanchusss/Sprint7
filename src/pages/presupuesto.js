@@ -65,6 +65,12 @@ function Presupuesto({
 
   //LOCALSTORAGE, ME GUARDA EL TOTAL DEL PRESUPUESTO
   //el almacenamiento solo puede ser en una cadena de texto y por ello, usamos json.stringify código cada vez que hay un cambio en la página, pero queremos que solo sea cuando el estado cambie
+
+  useEffect(() => {
+    console.log("Cambio en checked");
+    localStorage.setItem("total", JSON.stringify(checked));
+  }, [checked]);
+
   useEffect(() => {
     console.log("Cambio en total");
     localStorage.setItem("total", JSON.stringify(total));
