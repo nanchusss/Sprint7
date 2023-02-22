@@ -59,6 +59,16 @@ export const Producto = styled.p`
     padding: 10px;
   }
 `;
+export const ModalStyle = styled.div`
+  color: black;
+  position: relative;
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  text-align: end;
+`;
 export const Total = styled.p`
   font-family: url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
   font-size: 32px;

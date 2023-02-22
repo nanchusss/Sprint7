@@ -8,14 +8,32 @@ import {
   OtherProducts,
 } from "./Styled";
 import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+import { v4 as uuidv4 } from "uuid";
+import Modal from "../Modal";
+import { ModalStyle } from "./Styled";
 
-function CheckboxesExample(presupuesto) {
-  const productos = [
-    { id: 1, nombre: "Una página Web (500 E)", precio: 500 },
-    { id: 2, nombre: "Una consultoría SEO (300 E)", precio: 300 },
-    { id: 3, nombre: "Una campanya de Google Ads (200 E)", precio: 200 },
-  ];
+function CheckboxesExample({ productos }) {
+  //MANEJO DEL POPUP MODAL
 
+  const [active, setActive] = useState(false);
+
+  const toggle = () => {
+    console.log("se ejecuta toggle");
+    console.log(active);
+    setActive(!active);
+    console.log(active);
+  };
+  const [mensaje, setMensaje] = useState(
+    "Este es el número de páginas de su Web"
+  );
+  const [mensaje2, setMensaje2] = useState(
+    "Este es el número de Idiomas de su página Web"
+  );
+  // const cambiarMensaje = () => {
+  //   setMensaje("idiomas");
+  // };
   const other = [
     { id: 4, nombre: "Cantidad de Páginas", precio: 30 },
     { id: 5, nombre: "Cantidad de Idiomes", precio: 30 },
@@ -31,30 +49,73 @@ function CheckboxesExample(presupuesto) {
   const [cantidad, setCantidad] = useState(0);
   const [cantidad2, setCantidad2] = useState(0);
   const [mostrarComponente, setMostrarComponente] = useState(false);
+  //const [carritoElemento, setCarritoElemento] = useState([]);
 
   //  CALCULAR TOTAL
   const calcularTotal = (e) => {
     let nuevoTotal = total;
+
     if (e.target.checked) {
+      //let element = e.target.checked;
+      console.log(e.target.checked);
+      console.log(e.target.id);
       nuevoTotal += parseInt(e.target.value);
       //suma el valor del checked y si no lo resta
+
+      //console.log(carritoElemento);
     } else {
       nuevoTotal -= parseInt(e.target.value);
     }
     setTotal(nuevoTotal);
   };
 
+  // const setCarri = (id, nuevoElemento) => {
+  //   let nuevoElemento = productos[id];
+  //   console.log("estamos editando la tarea: ", id);
+  //   setCarritoElemento(
+  //     productos.map((producto) => {
+  //       if (producto.id === id) {
+  //         return {
+  //           ...producto,
+  //           id: nuevoElemento,
+  //           //cambiando el valor de completado.
+  //         };
+  //       }
+  //       return producto;
+  //     })
+  //   );
+  // };
+  // const settingCarrito = ({ productos }) => {
+  //   // e.preventDefault();
+  //   console.log("hola si funciono para setear el carrito");
+  //   setCarritoElemento([
+  //     ...carritoElemento,
+  //     {
+  //       productos,
+  //     },
+  //   ]);
+  //   console.log(carritoElemento);
+  // };
   //LOCALSTORAGE, ME GUARDA EL TOTAL DEL PRESUPUESTO
   useEffect(() => {
     console.log("Cambio en total");
     localStorage.setItem("total", JSON.stringify(total));
     //el almacenamiento solo puede ser en una cadena de texto y por ello, usamos json.stringify
-    console.log(
-      JSON.stringify("Almacenamiento local del total, que es: ", total)
-    );
 
     //código cada vez que hay un cambio en la página, pero queremos que solo sea cuando el estado cambie
   }, [total]);
+  // useEffect(() => {
+  //   console.log("Cambio de producto");
+  //   localStorage.setItem("carrito", JSON.stringify(element));
+  //   //el almacenamiento solo puede ser en una cadena de texto y por ello, usamos json.stringify
+  //   console.log(
+  //     JSON.stringify("Almacenamiento local del total, que es: ", {
+  //       element,
+  //     })
+  //   );
+
+  //   //código cada vez que hay un cambio en la página, pero queremos que solo sea cuando el estado cambie
+  // }, [carritoElemento]);
 
   //AUMENTAR CONTADOR DE PAGINAS E IDIOMAS
   const aumentar = (a) => {
@@ -107,6 +168,10 @@ function CheckboxesExample(presupuesto) {
     }
   };
 
+  // const guardar = () => {
+  //   console.log("Se acciona guardar");
+  // };
+
   //MOSTRAR DIV OCULTO
   const mostrarDiv = (a) => {
     let id = a.target.id;
@@ -137,6 +202,7 @@ function CheckboxesExample(presupuesto) {
                     value={producto.precio}
                     onChange={calcularTotal}
                     onClick={mostrarDiv}
+
                     // Cambio de estado del checkbox
                   />
                 </p>
@@ -148,6 +214,7 @@ function CheckboxesExample(presupuesto) {
         </div>
       </StyledDiv>
       <Total>Total: {total}</Total>
+      {/* <button onClick={settingCarrito({ productos })}>Click</button> */}
 
       <div className={mostrarComponente ? "Mostrar" : null}>
         {mostrarComponente && (
@@ -170,6 +237,15 @@ function CheckboxesExample(presupuesto) {
                         -
                         {/* <p>{pricePaginas} Este es el precio de páginas</p>{" "} */}
                       </Buttons>
+                      <FontAwesomeIcon
+                        icon={faCircleInfo}
+                        onClick={toggle}
+                      ></FontAwesomeIcon>
+                      <Modal active={active} toggle={toggle}>
+                        <ModalStyle>
+                          <div>{mensaje}</div>
+                        </ModalStyle>
+                      </Modal>
                     </section>
                     <section>
                       <div>El total de Idiomas es:</div>
@@ -182,6 +258,16 @@ function CheckboxesExample(presupuesto) {
                       <Buttons value={a.precio} id="5" onClick={disminuir}>
                         -
                       </Buttons>
+                      <FontAwesomeIcon icon={faCircleInfo} onClick={toggle}>
+                        <Modal active={active} toggle={toggle}>
+                          <ModalStyle>
+                            <div>
+                              Este elemento muestra el número de idiomas de su
+                              Web
+                            </div>
+                          </ModalStyle>
+                        </Modal>
+                      </FontAwesomeIcon>
                     </section>
                   </OtherProducts>
                 );
