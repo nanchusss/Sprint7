@@ -1,6 +1,7 @@
-import CheckboxesExample from "./pages/presupuesto";
+import Presupuesto from "./pages/presupuesto";
 import Bienvenida from "./pages/welcome";
 import { useState } from "react";
+import ListaPresupuestos from "./components/listaPresupuestos";
 
 const App = () => {
   const productos = [
@@ -8,6 +9,7 @@ const App = () => {
     { id: 2, nombre: "Una consultoría SEO (300 E)", precio: 300 },
     { id: 3, nombre: "Una campanya de Google Ads (200 E)", precio: 200 },
   ];
+  const [total, setTotal] = useState(0);
 
   const [State, setInitialState] = useState(true);
   function start() {
@@ -20,7 +22,10 @@ const App = () => {
   ) : (
     <>
       <div>
-        <CheckboxesExample productos={productos} />
+        <Presupuesto productos={productos} total={total} setTotal={setTotal} />
+      </div>
+      <div>
+        <ListaPresupuestos total={total} setTotal={setTotal} />
       </div>
     </>
   );

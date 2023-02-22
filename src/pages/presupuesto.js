@@ -13,7 +13,7 @@ import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import Modal from "../components/Modal";
 import { ModalStyle } from "./Styled";
 
-function Presupuesto({ productos }) {
+function Presupuesto({ productos, total, setTotal }) {
   //MANEJO DEL POPUP MODAL
   const [active, setActive] = useState(false);
   const toggle = () => {
@@ -32,7 +32,9 @@ function Presupuesto({ productos }) {
     { id: 4, nombre: "Cantidad de Páginas", precio: 30 },
     { id: 5, nombre: "Cantidad de Idiomes", precio: 30 },
   ];
-  const [total, setTotal] = useState(0);
+  // Esta declaración de total sería para tomar el valor guardado en localstorage.
+  // const [total, setTotal] = useState(totalGuardado);
+
   const [cantidad, setCantidad] = useState(0);
   const [cantidad2, setCantidad2] = useState(0);
   const [mostrarComponente, setMostrarComponente] = useState(false);
@@ -58,6 +60,12 @@ function Presupuesto({ productos }) {
     console.log("Cambio en total");
     localStorage.setItem("total", JSON.stringify(total));
   }, [total]);
+
+  //LOCALSTORAGE Y DEFINICIÓN DE TOTAL POR DEFECTO QUE VA A SER EL TOTAL GUARDADO, EL TEMA ES QUE NO ME LIMPIA EL TOTAL, TENGO QUE VER ESO.
+
+  // const totalGuardado = localStorage.getItem("total")
+  //   ? JSON.parse(localStorage.getItem("total"))
+  //   : [];
 
   //AUMENTAR CONTADOR DE PAGINAS E IDIOMAS
   const aumentar = (a) => {
