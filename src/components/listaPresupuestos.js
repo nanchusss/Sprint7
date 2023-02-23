@@ -10,6 +10,11 @@ const ListaPresupuestos = ({ total, cantidad, cantidad2, checked }) => {
   const handleInputPresupuesto = (e) => {
     cambiarInputPresupuesto(e.target.value);
   };
+  const [inputCliente, cambiarInputCliente] = useState("");
+
+  const handleInputCliente = (e) => {
+    cambiarInputCliente(e.target.value);
+  };
   const [lista, setLista] = useState([]);
 
   const agregarPresupuesto = (e) => {
@@ -22,6 +27,7 @@ const ListaPresupuestos = ({ total, cantidad, cantidad2, checked }) => {
       {
         id: uuidv4(),
         nombre: inputPresupuesto,
+        cliente: inputCliente,
         total: `Precio Final: ${total}`,
         cantidadPaginas: `La cantidad de páginas es ${cantidad}`,
         cantidadIdiomas: `La cantidad de idiomas es ${cantidad2}`,
@@ -46,6 +52,13 @@ const ListaPresupuestos = ({ total, cantidad, cantidad2, checked }) => {
           value={inputPresupuesto}
           onChange={(e) => handleInputPresupuesto(e)}
         />
+        <input
+          style={styles.input}
+          type="text"
+          placeholder="Nombre Cliente"
+          value={inputCliente}
+          onChange={(e) => handleInputCliente(e)}
+        />
         <button type="submit" style={styles.btn}>
           <FontAwesomeIcon icon={faPlusSquare}> </FontAwesomeIcon>
         </button>
@@ -56,7 +69,10 @@ const ListaPresupuestos = ({ total, cantidad, cantidad2, checked }) => {
           lista.map((a) => {
             return (
               <Presu>
-                <div style={styles.nombre}>{a.nombre}</div>
+                <div style={styles.input__container}>
+                  <div style={styles.nombre}>{a.nombre}</div>
+                  <div style={styles.nombre}>{a.cliente}</div>
+                </div>
                 <section style={styles.descripcionPresupuestos}>
                   <div>{a.total}</div>
                   <div>{a.elementos}</div>
@@ -93,13 +109,19 @@ const styles = {
     marginRight: "80px",
     border: "none",
   },
+  input__container: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gridTemplateRows: "1fr",
+    gap: "5px",
+    gridTemplateAreas: ". .",
+  },
   nombre: {
-    fontSize: "16px",
-    borderRadius: "5px",
-    boxShadow: "none",
-    margin: "10px",
+    marginTop: "15px",
+    marginBottom: "15px",
     width: "100%",
-    marginRight: "80px",
+    fontWeight: "600",
+    fontColor: "#5F5E5F",
   },
   descripcionPresupuestos: {
     fontSize: "12px",
@@ -129,7 +151,7 @@ const styles = {
   },
   input: {
     position: "sticky",
-    minWidth: "300px",
+    maxWidth: "300px",
     height: "40px",
     fontColor: "black",
     outline: "none",
@@ -137,7 +159,6 @@ const styles = {
     borderRadius: "5px",
     marginRight: "5px",
     marginLeft: "auto",
-    marginBottom: "30px",
   },
   section: {
     maxWidth: "500px",
