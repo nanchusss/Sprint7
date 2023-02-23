@@ -4,19 +4,13 @@ import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import { v4 as uuidv4 } from "uuid";
 import { Presu } from "../pages/Styled";
 
-const ListaPresupuestos = ({
-  total,
-  cantidad,
-  cantidad2,
-  checked,
-  lista,
-  setLista,
-}) => {
+const ListaPresupuestos = ({ total, cantidad, cantidad2, checked }) => {
   const [inputPresupuesto, cambiarInputPresupuesto] = useState("");
 
   const handleInputPresupuesto = (e) => {
     cambiarInputPresupuesto(e.target.value);
   };
+  const [lista, setLista] = useState([]);
 
   const agregarPresupuesto = (e) => {
     let date = new Date();
@@ -70,6 +64,9 @@ const ListaPresupuestos = ({
                   <div>{a.cantidadIdiomas}</div>
                   <div>{a.date}</div>
                 </section>
+                {/* <button id={a.id} onClick={borrarPresupuesto}>
+                  x
+                </button> */}
               </Presu>
             );
           })

@@ -13,7 +13,6 @@ const App = () => {
     { id: 4, nombre: "Cantidad de Páginas", precio: 30 },
     { id: 5, nombre: "Cantidad de Idiomes", precio: 30 },
   ];
-  const [lista, setLista] = useState([]);
 
   const [total, setTotal] = useState(0);
 
@@ -55,8 +54,6 @@ const App = () => {
           cantidad2={cantidad2}
           setCantidad2={setCantidad2}
           checked={checked}
-          lista={lista}
-          setLista={setLista}
         />
       </div>
     </>
