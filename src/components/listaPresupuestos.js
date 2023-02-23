@@ -121,15 +121,14 @@ const styles = {
     marginBottom: "15px",
     width: "100%",
     fontWeight: "600",
-    fontColor: "#5F5E5F",
+    color: "#5F5E5F",
   },
   descripcionPresupuestos: {
     fontSize: "12px",
-    border: "1px solid #cbcbcb",
     borderRadius: "5px",
     padding: "10px",
-
     minWidth: "310px",
+    boxShadow: " 10px 10px 27px -12px rgba(232,232,237,1)",
   },
   lista: {
     maxWidth: "300px",

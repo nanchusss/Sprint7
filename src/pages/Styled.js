@@ -146,10 +146,9 @@ export const Welcome = styled.div`
   }
   button {
     font-size: 22px;
-    background-color: white;
-    border: 1px solid;
+    background-color: #e6e9f0;
+    border: none;
     color: #526173;
-    border-color: #aab7c8;
     padding: 20px;
     border-radius: 8px;
     width: 100%;
