@@ -13,6 +13,9 @@ const ListaPresupuestos = ({ total, cantidad, cantidad2, checked }) => {
   const [lista, setLista] = useState([]);
 
   const agregarPresupuesto = (e) => {
+    let date = new Date();
+
+    console.log(date);
     e.preventDefault();
     setLista([
       ...lista,
@@ -23,6 +26,7 @@ const ListaPresupuestos = ({ total, cantidad, cantidad2, checked }) => {
         cantidadPaginas: `La cantidad de páginas es ${cantidad}`,
         cantidadIdiomas: `La cantidad de idiomas es ${cantidad2}`,
         elementos: `Elementos incluidos: ${checked}`,
+        date: date.toString(),
       },
     ]);
     console.log(lista);
@@ -57,6 +61,7 @@ const ListaPresupuestos = ({ total, cantidad, cantidad2, checked }) => {
                   <div>{a.elementos}</div>
                   <div>{a.cantidadPaginas}</div>
                   <div>{a.cantidadIdiomas}</div>
+                  <div>{a.date}</div>
                 </section>
                 {/* <button id={a.id} onClick={borrarPresupuesto}>
                   x
