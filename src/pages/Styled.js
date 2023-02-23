@@ -1,19 +1,13 @@
 import styled from "styled-components";
 
 export const Pretty = styled.button`
-  background-image: url("../images/gradient.png");
-  background-size: cover;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  margin: 20px;
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: start;
-  min-width: 40%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: "area1 area2";
 `;
+
 export const Pretty2 = styled.h4`
   display: flex;
   position: relative;
@@ -34,6 +28,9 @@ export const StyledDiv = styled.div`
   margin-left: auto;
   margin-right: auto;
   position: relative;
+`;
+export const Presu = styled.div`
+  background-color: transparent;
 `;
 
 export const Producto = styled.p`
@@ -84,7 +81,9 @@ export const Total = styled.p`
 export const DivOculto = styled.div`
   /* visibility: hidden !important; */
   display: flex;
-  margin: 20px;
+  align-items: flex-start;
+  justify-content: right;
+  margin-right: 0px;
   z-index: 0;
   font-size: 16px;
 `;

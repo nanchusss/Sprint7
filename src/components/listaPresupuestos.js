@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import { v4 as uuidv4 } from "uuid";
+import { Presu } from "../pages/Styled";
 
 const ListaPresupuestos = ({ total, cantidad, cantidad2, checked }) => {
   const [inputPresupuesto, cambiarInputPresupuesto] = useState("");
@@ -42,16 +43,14 @@ const ListaPresupuestos = ({ total, cantidad, cantidad2, checked }) => {
           onChange={(e) => handleInputPresupuesto(e)}
         />
         <button type="submit" style={styles.btn}>
-          <FontAwesomeIcon icon={faPlusSquare} style={styles.icon}>
-            {" "}
-          </FontAwesomeIcon>
+          <FontAwesomeIcon icon={faPlusSquare}> </FontAwesomeIcon>
         </button>
       </form>
       <ul style={styles.lista}>
         {lista.length > 0 ? (
           lista.map((a) => {
             return (
-              <div>
+              <Presu>
                 <div style={styles.nombre}>{a.nombre}</div>
                 <section style={styles.descripcionPresupuestos}>
                   <div>{a.total}</div>
@@ -59,7 +58,10 @@ const ListaPresupuestos = ({ total, cantidad, cantidad2, checked }) => {
                   <div>{a.cantidadPaginas}</div>
                   <div>{a.cantidadIdiomas}</div>
                 </section>
-              </div>
+                {/* <button id={a.id} onClick={borrarPresupuesto}>
+                  x
+                </button> */}
+              </Presu>
             );
           })
         ) : (
@@ -71,22 +73,19 @@ const ListaPresupuestos = ({ total, cantidad, cantidad2, checked }) => {
 };
 const styles = {
   bod: {
-    position: "relative",
+    display: "flex",
     flexDirection: "column",
     alignItems: "start",
   },
-  icon: {
-    padding: "10px",
-  },
+
   btn: {
-    width: "100%",
-    maxWidth: "40px",
+    width: "40px",
     height: "40px",
     opacity: "transparent",
     borderRadius: "5px",
     marginLeft: "0px",
     marginRight: "80px",
-    marginTop: "170px",
+    border: "none",
   },
   nombre: {
     fontSize: "16px",
@@ -108,37 +107,34 @@ const styles = {
     maxWidth: "300px",
     display: "flex",
     flexDirection: "column",
-    marginRight: "130px",
-    marginLeft: "auto",
+    marginRight: "auto",
+    marginLeft: "0",
     marginTop: "0px",
     boxShadow: "none",
   },
   form: {
-    marginTop: "-700px",
+    position: "sticky",
     maxWidth: "500px",
     display: "flex",
     flexDirection: "row",
-    marginRight: "0",
-    marginLeft: "auto",
+    marginRight: "auto",
+    marginLeft: "40px",
+    marginTop: "-500px",
   },
   input: {
+    position: "sticky",
     minWidth: "300px",
-    minHeight: "40px",
+    height: "40px",
     fontColor: "black",
     outline: "none",
     borderColor: "#eeeeed",
     borderRadius: "5px",
-    display: "flex",
-    position: "relative",
-    alignItems: "right",
     marginRight: "5px",
     marginLeft: "auto",
     marginBottom: "30px",
-    marginTop: "170px",
   },
   section: {
     maxWidth: "500px",
-
     borderRadius: "5px",
     display: "flex",
     position: "relative",
