@@ -93,6 +93,8 @@ const ListaPresupuestos = ({ total, cantidad, cantidad2, checked }) => {
     </div>
   );
 };
+
+//TRABAJANDO CON LOS ESTILOS EN EL MISMO COMPONENTE
 const styles = {
   bod: {
     display: "flex",
@@ -117,6 +119,7 @@ const styles = {
     gridTemplateAreas: ". .",
   },
   nombre: {
+    marginLeft: "10px",
     marginTop: "15px",
     marginBottom: "15px",
     width: "100%",

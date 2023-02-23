@@ -72,7 +72,8 @@ export const Total = styled.p`
   color: #526173;
   max-width: 30%;
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
   position: relative;
@@ -80,24 +81,25 @@ export const Total = styled.p`
 `;
 export const DivOculto = styled.div`
   /* visibility: hidden !important; */
+
   display: flex;
-  align-items: flex-start;
-  justify-content: right;
-  margin-right: 0px;
-  z-index: 0;
+  position: relative;
   font-size: 16px;
+  margin-right: 0px;
+  margin-left: 1000px;
 `;
 export const OtherProducts = styled.div`
   border-color: #dfdddd;
   border: 0.5px solid #dfdddd;
   padding: 16px;
   background-color: white;
-  border-radius: 8px;
+  border-radius: 5px;
   display: flex;
+  position: absolute;
   flex-direction: column;
   width: 300px;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 0px;
   margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
@@ -111,7 +113,6 @@ export const Buttons = styled.button`
   border-color: #d6d5d5;
   margin-left: 5px;
   margin-right: 5px;
-
   margin-bottom: 10px;
   font-size: 16px;
   display: inline-flex;
