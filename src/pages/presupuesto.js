@@ -31,6 +31,11 @@ function Presupuesto({
     console.log("se ejecuta toggle");
     setActive(!active);
   };
+  const toggle2 = () => {
+    console.log("se ejecuta toggle 2");
+    setActive(!active);
+  };
+
   //PRUEBAS CAMBIO DE MENSAJE quedó en la nada he probado de todo.
   // const [mensaje, setMensaje] = useState(
   //   "Este es el número de páginas de su Web"
@@ -215,7 +220,7 @@ function Presupuesto({
                       <Buttons value={a.precio} id="5" onClick={disminuir}>
                         -
                       </Buttons>
-                      <FontAwesomeIcon icon={faCircleInfo} onClick={toggle}>
+                      <FontAwesomeIcon icon={faCircleInfo} onClick={toggle2}>
                         <Modal active={active} toggle={toggle}>
                           <ModalStyle>
                             <div>

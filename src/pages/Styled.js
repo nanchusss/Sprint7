@@ -99,7 +99,7 @@ export const OtherProducts = styled.div`
   flex-direction: column;
   width: 300px;
   justify-content: center;
-  margin-top: 0px;
+  margin-top: 20px;
   margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;

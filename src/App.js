@@ -15,10 +15,20 @@ const App = () => {
   ];
 
   const [total, setTotal] = useState(0);
-
+  const [mostrarComponente, setMostrarComponente] = useState(false);
   const [cantidad, setCantidad] = useState(0);
   const [cantidad2, setCantidad2] = useState(0);
   const [checked, setChecked] = useState([]);
+  const [active, setActive] = useState(false);
+
+  const toggle = () => {
+    console.log("se ejecuta toggle");
+    setActive(!active);
+  };
+  const toggle1 = () => {
+    console.log("se ejecuta toggle 1");
+    setActive(!active);
+  };
 
   const [State, setInitialState] = useState(true);
   function start() {
@@ -30,8 +40,24 @@ const App = () => {
     <Bienvenida iniciar={start} />
   ) : (
     <>
+      <divOculto
+        toggle={toggle}
+        toggle1={toggle1}
+        total={total}
+        other={other}
+        setTotal={setTotal}
+        cantidad={cantidad}
+        setCantidad={setCantidad}
+        cantidad2={cantidad2}
+        setCantidad2={setCantidad2}
+        checked={checked}
+        setChecked={setChecked}
+        mostrarComponente={mostrarComponente}
+        setMostrarComponente={setMostrarComponente}
+      ></divOculto>
       <div>
         <Presupuesto
+          toggle={toggle}
           productos={productos}
           total={total}
           setTotal={setTotal}
@@ -42,10 +68,13 @@ const App = () => {
           setCantidad2={setCantidad2}
           checked={checked}
           setChecked={setChecked}
+          mostrarComponente={mostrarComponente}
+          setMostrarComponente={setMostrarComponente}
         />
       </div>
       <div>
         <ListaPresupuestos
+          toggle={toggle}
           total={total}
           setTotal={setTotal}
           other={other}

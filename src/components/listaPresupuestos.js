@@ -11,11 +11,60 @@ const ListaPresupuestos = ({ total, cantidad, cantidad2, checked }) => {
     cambiarInputPresupuesto(e.target.value);
   };
   const [inputCliente, cambiarInputCliente] = useState("");
+  //const [listaAnterior, setListaAnterior] = useState([lista]);
 
   const handleInputCliente = (e) => {
     cambiarInputCliente(e.target.value);
   };
-  const [lista, setLista] = useState([]);
+
+  //ORDENAR PRESUPUESTOS POR NOMBRE, ALFABÉTICAMENTE
+  const ordenarPresupuestos = (e) => {
+    console.log(lista);
+    // console.log(lista.map((e) => e.nombre));
+    e.preventDefault();
+    setLista(lista.sort((x, y) => x.nombre.localeCompare(y.nombre)));
+
+    console.log(lista);
+  };
+  //ORDENAR PRESUPUESTOS POR FECHA ASCENDENTE
+  const ordenarPresupuestosPorFecha = (e) => {
+    console.log(lista);
+    // console.log(lista.map((e) => e.nombre));
+    e.preventDefault();
+    setLista(lista.sort((x, y) => x.date.localeCompare(y.date)));
+
+    console.log(lista);
+  };
+  //RESETEAR ORDEN PENDIENTE
+
+  //BUSCAR PRESUPUESTO POR NOMBRE:
+  const [inputBuscador, cambiarInputBuscador] = useState("");
+  // const [listaAnterior, setListaAnterior] = useState([]);
+  const handelInputBuscador = (e) => {
+    cambiarInputBuscador(e.target.value);
+    console.log("holis, se cambió a", inputBuscador);
+  };
+  // const [elemento, setElemento] = useState([]);
+  const buscarPorNombre = (e) => {
+    e.preventDefault();
+
+    lista.map((e) => {
+      if (e.nombre === inputBuscador) {
+        console.log(e.nombre, "yuhu");
+        console.log(e);
+        console.log(lista);
+
+        console.log(lista);
+      }
+    });
+  };
+
+  //CARGA DE LOS PRESUPUESTOS ANTERIORES, PERO CUANDO LE DOY START SE REINICIAN...
+
+  const presupuestosGuardados = localStorage.getItem("lista")
+    ? JSON.parse(localStorage.getItem("lista"))
+    : [];
+  const [lista, setLista] = useState([presupuestosGuardados]);
 
   const agregarPresupuesto = (e) => {
     let date = new Date();
@@ -35,12 +84,22 @@ const ListaPresupuestos = ({ total, cantidad, cantidad2, checked }) => {
         date: `Fecha: ${date.toString()}`,
       },
     ]);
+    // setListaAnterior(lista);
     console.log(lista);
   };
   useEffect(() => {
     console.log("Cambio en total");
     localStorage.setItem("total", JSON.stringify(lista));
   }, [lista]);
+
+  const listaAnterior = lista;
+  const resetearOrden = () => {
+    console.log(listaAnterior);
+    // // console.log(lista.map((e) => e.nombre));
+    // e.preventDefault();
+    setLista(listaAnterior);
+    console.log(lista);
+  };
 
   return (
     <div style={styles.bod}>
@@ -90,6 +149,48 @@ const ListaPresupuestos = ({ total, cantidad, cantidad2, checked }) => {
           <div style={styles.nombre}>No hay presupuestos agregados</div>
         )}
       </ul>
+      <div>
+        <button onClick={ordenarPresupuestos}>Ordenar Alfabeticamente</button>
+      </div>
+      <div>
+        <button onClick={ordenarPresupuestosPorFecha}>Ordenar por Fecha</button>
+      </div>
+      <div>
+        <button onClick={resetearOrden}>Resetar Orden</button>
+      </div>
+      <form action="" onSubmit={buscarPorNombre}>
+        <input
+          type="text"
+          placeholder="Buscar..."
+          value={inputBuscador}
+          onChange={(e) => handelInputBuscador(e)}
+        />
+      </form>
+      <ul>
+        {lista.map((e) => {
+          if (e.nombre === inputBuscador) {
+            return (
+              <>
+                <Presu>
+                  <section style={styles.descripcionPresupuestos}>
+                    <div style={styles.nombre}>{e.nombre}</div>
+                    <div style={styles.nombre}>{e.cliente}</div>
+                    <div>{e.total}</div>
+                    <div>{e.elementos}</div>
+                    <div>{e.cantidadPaginas}</div>
+                    <div>{e.cantidadIdiomas}</div>
+                    <div>{e.date}</div>
+                  </section>
+                  {/* <button id={a.id} onClick={borrarPresupuesto}>
+                  x
+                </button> */}
+                </Presu>
+              </>
+            );
+          }
+        })}
+      </ul>
+      {/* <div>{elemento}</div> */}
     </div>
   );
 };
@@ -122,6 +223,7 @@ const styles = {
     marginLeft: "10px",
     marginTop: "15px",
     marginBottom: "15px",
+    fontSize: "18px",
     width: "100%",
     fontWeight: "600",
     color: "#5F5E5F",

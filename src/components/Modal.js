@@ -13,6 +13,13 @@ export default class Modal extends Component {
             </div>
           </div>
         )}
+        {/* {active1 && (
+          <div style={styles.wrapper} onClick={toggle2}>
+            <div style={styles.window}>
+              <div>{children}</div>
+            </div>
+          </div>
+        )} */}
       </Portal>
     );
   }
